@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const userName = 'Евгений';
+  const theme = 'light';
+  const data = [];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className ='App'> 
+      {data ? 
+      <MyHeader 
+        name = {userName} 
+        id = {1} 
+        theme = {theme}
+        data = {data}
+        /> 
+      : null}
+      <div>Hello</div>
     </div>
   );
 }
 
 export default App;
+
+const MyHeader = ({name, id, theme}) => {
+  console.log(name);
+  return (
+    <div style={{
+      background: theme === 'dark' ? "#222" : "#fff",
+      opacity: 0.2
+      }}>
+      <h1>Привет, {name}</h1>
+    </div>
+  )
+}
