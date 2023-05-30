@@ -1,22 +1,21 @@
 // import logo from './logo.svg';
 import './App.css';
+// import { useState } from 'react';
+import { MessagesBlock } from './components/messages';
+
 
 function App() {
   const userName = 'Евгений';
   const theme = 'light';
-  const data = [];
 
   return (
     <div className ='App'> 
-      {data ? 
       <MyHeader 
         name = {userName} 
         id = {1} 
         theme = {theme}
-        data = {data}
-        /> 
-      : null}
-      <div>Hello</div>
+        />
+      <MessagesBlock/>
     </div>
   );
 }
