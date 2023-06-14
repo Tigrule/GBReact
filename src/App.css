@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -36,3 +41,26 @@
     transform: rotate(360deg);
   }
 }
+
+.message-block label {
+  display: block;
+  margin: 5px;
+}
+
+.message {
+  border: 1px solid #444;
+  margin: 5px;
+}
+
+.message__name {
+  font-size: 18pt;
+  padding: 2px;
+}
+
+.message-block__input-label {
+  display: inline-block;
+  min-width: 90px;
+  margin: 0 5px;
+}
+
+

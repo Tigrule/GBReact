@@ -18,30 +18,47 @@ export const MessagesBlock = () => {
 
   
   return (
-    <div>
+    <div className = "message-block">
+      <h2 className = "message-block__header">Приём заявок</h2>
+      <div className="message-block__subhead">Введите ваше сообщение</div>
       <label>
-        name
-        <input type="text" name="name" onChange={(e) => changeMessage(e.target)} />
+        <span className="message-block__input-label">Ваше имя</span>
+        <input 
+          type="text"
+          name="name"
+          className = "message-block__input"
+          onChange={(e) => changeMessage(e.target)} />
       </label>
       <label>
-        message
-        <input type="text" name="message" onChange={(e) => changeMessage(e.target)}/>
+        <span
+        className="message-block__input-label" 
+        style = {{verticalAlign: "top"}}>Сообщение</span>
+        <textarea
+        name="message"
+        className = "message-block__input"
+        onChange={(e) => changeMessage(e.target)}/>
       </label>
       <button onClick={() => {
         newMessage.id = id;
+
         const name = newMessage.name;
+
         if (newMessage.name && newMessage.message) {
           const answer = function() {
-            setMessages(list => [...list, createAnswer(name)])
+            setMessages(list => [...list, createAnswer(name)]);
           }
-          setMessages(list => [...list, Object.assign(newMessage)])
-            
-          setTimeout(answer, 1500)
-        }else return;
-        document.querySelectorAll('input').forEach(input => input.value = '');
+          setMessages(list => [...list, Object.assign(newMessage)]);
+          setTimeout(answer, 1500);
+        }else {
+          alert('empty field');
+          return};
+
+        document.querySelectorAll('.message-block__input')
+          .forEach(input => input.value = '');
+
         setId(id => id + 1);
       }
-      }></button>
+      }>Отправить</button>
       <div>
         <MessagesList messages = {messages}/>
       </div>
@@ -53,10 +70,10 @@ const MessagesList = (props) => {
   return props.messages.map((message, index) => {return (
       <div
         key = {index}
+        className= "message"
       >
-        {/* <div >{message.id}</div> */}
-        <div class = "message__name">{message.name}</div>
-        <div class = "message__message">{message.message}</div>
+        <h4 className = "message__name">{message.name}</h4>
+        <p className = "message__message">{message.message}</p>
       </div>
   )})
 }
